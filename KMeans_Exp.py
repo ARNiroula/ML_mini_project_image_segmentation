@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 #=-=-=-=-=-=-=-=-=-=-
 #   Generate data
 #=-=-=-=-=-=-=-=-=-=-
-classA = -2 * np.random.rand(40,2).T
-classB = 1 + 2 * np.random.rand(20,2).T
-classC = 3 + 2 * np.random.rand(20,2).T
+classA = -2 * np.random.rand(80,2).T
+classB = 1 + 2 * np.random.rand(40,2).T
+classC = 3 + 2 * np.random.rand(40,2).T
 X = np.concatenate((classA, classB), axis=1)
 X = np.concatenate((X, classC), axis=1).T
 
@@ -34,4 +34,4 @@ km.fit(X, init_state = o)
 #=-=-=-=-=-=-=-=-=-=-
 point_test = np.array([[2,2], [-2,-2]])
 print(km.predict(point_test))
-km.vizualize()
+km.vizualize('testing')

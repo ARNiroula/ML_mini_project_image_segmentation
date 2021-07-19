@@ -31,7 +31,7 @@ class KMeans():
 		"""
 		return self.clusters
 
-	def vizualize(self):
+	def vizualize(self,name):
 		""" Plot data points and final position of centroids.
 			This function need to be called after training.
 		"""
@@ -45,7 +45,7 @@ class KMeans():
 
 		plt.xlabel('x1')
 		plt.ylabel('x2')
-		plt.savefig('kmeans.png')
+		plt.savefig('./Segmented Images/kmeans_'+name+'.png')
 
 	def fit(self, X, init_state = None, max_iter = 30):
 		""" Train the K-Mean model, finds ultimate positions
