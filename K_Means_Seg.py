@@ -11,7 +11,7 @@ print("Now enter the number of cluster to be used")
 k=int(input())
 
 
-image = cv2.imread('./'+name)  #Read image
+image = cv2.imread('./Images/'+name)  #Read image
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB) #Convert to RGB
 
 X = image.reshape((-1,3))   #Reshape to (Npts, Ndim = 3)
@@ -32,6 +32,6 @@ segmented_image = segmented_image.reshape((image.shape))
 plt.imshow((segmented_image).astype(np.uint8))
 plt.xlabel('k = ' + str(k))
 plt.tick_params(labelleft=False, labelbottom=False, labelright=False, labeltop=False)
-plt.savefig("2_next_kmeans"+name+".png")
+plt.savefig("./Segmented Images/kmeans"+name+".png")
 
 km.vizualize()

@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 classA = -2 * np.random.rand(80,2).T
 classB = 1 + 2 * np.random.rand(40,2).T
 classC = 3 + 2 * np.random.rand(40,2).T
+print(classA,classB,classC)
 X = np.concatenate((classA, classB), axis=1)
 X = np.concatenate((X, classC), axis=1).T
 
