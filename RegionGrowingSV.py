@@ -120,7 +120,7 @@ class regionGrow():
 
 
 
-def Test_Affiche(event,x,y,flags,param):
+def Test(event,x,y,flags,param):
     global points
     if event == cv2.EVENT_RBUTTONDOWN:
         cv2.destroyAllWindows()
@@ -131,7 +131,7 @@ def Test_Affiche(event,x,y,flags,param):
 seeds=[]
 example = regionGrow(sys.argv[1],sys.argv[2])
 cv2.namedWindow('image')
-cv2.setMouseCallback('image',Test_Affiche)
+cv2.setMouseCallback('image',Test)
 cv2.imshow('image',cv2.imread(sys.argv[1],1))
 cv2.waitKey(0)
 

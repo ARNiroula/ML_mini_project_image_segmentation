@@ -39,7 +39,7 @@ class KMeans():
 		plt.scatter(self.X[:,0], self.X[:,1], color = '#333333')
 		Npts, Ndim = self.X.shape
 		Nclus, _ = self.centroids.shape
-
+		print(self.centroids)
 		for k in range(Nclus):
 			plt.scatter(self.centroids[k][0], self.centroids[k][1], marker = "*", color="#4169e1", s=130)
 
@@ -55,7 +55,7 @@ class KMeans():
 		the model will generate random positions.
 		:param max_iter: Maximum number of iterations
 		"""
-		Npts, Ndim = X.shape
+		_, Ndim = X.shape
 		self.X = X
 
 		if init_state is None:
@@ -66,7 +66,6 @@ class KMeans():
 		for i in range(max_iter):
 			diff = cdist(X, self.centroids, metric="euclidean")
 			self.clusters = np.argmin(diff, axis=1)
-
 			for i in range(self.n_clus):
 				check=np.mean(X[np.where(self.clusters == i)] , axis=0)	
 				if math.isnan(check[0]):
