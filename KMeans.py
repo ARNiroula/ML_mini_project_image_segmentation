@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.spatial.distance import cdist
 from scipy.spatial import distance_matrix
-
+import math
 
 class KMeans():
 	"""
@@ -63,14 +63,15 @@ class KMeans():
 			self.centroids = np.random.uniform(low = X_min, high=X_max, size = (self.n_clus,Ndim))
 		else:
 			self.centroids = init_state
-
 		for i in range(max_iter):
-
 			diff = cdist(X, self.centroids, metric="euclidean")
 			self.clusters = np.argmin(diff, axis=1)
 
 			for i in range(self.n_clus):
-
+				check=np.mean(X[np.where(self.clusters == i)] , axis=0)	
+				if math.isnan(check[0]):
+					continue
+				# print(np.mean(X[np.where(self.clusters == i)] , axis=0))
 				self.centroids[i] = np.mean(X[np.where(self.clusters == i)] , axis=0)
 
 	def predict(self, X):
