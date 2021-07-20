@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from scipy.spatial.distance import cdist
 from scipy.spatial import distance_matrix
 import math
+np.seterr(divide='ignore', invalid='ignore')
 
 class KMeans():
 	"""
@@ -47,7 +48,7 @@ class KMeans():
 		plt.ylabel('x2')
 		plt.savefig('./Segmented Images/kmeans_'+name+'.png')
 
-	def fit(self, X, init_state = None, max_iter = 30):
+	def fit(self, X, init_state = None, max_iter = 50):
 		""" Train the K-Mean model, finds ultimate positions
 		for centroids and create clusters.
 		:param X: Data matrix with shape (Npts, Ndim)
@@ -63,14 +64,17 @@ class KMeans():
 			self.centroids = np.random.uniform(low = X_min, high=X_max, size = (self.n_clus,Ndim))
 		else:
 			self.centroids = init_state
+		# print(self.centroids)
 		for i in range(max_iter):
 			diff = cdist(X, self.centroids, metric="euclidean")
 			self.clusters = np.argmin(diff, axis=1)
 			for i in range(self.n_clus):
 				check=np.mean(X[np.where(self.clusters == i)] , axis=0)	
 				if math.isnan(check[0]):
+					# print('NAN WARNING',end='    ')
+					# print(check)
 					continue
-				# print(np.mean(X[np.where(self.clusters == i)] , axis=0))
+				# print('This ran')
 				self.centroids[i] = np.mean(X[np.where(self.clusters == i)] , axis=0)
 
 	def predict(self, X):
