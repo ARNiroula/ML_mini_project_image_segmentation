@@ -95,10 +95,10 @@ def main():
     aGH = cv2.adaptiveThreshold(image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 89, 7)
 
 
-    cv2.imwrite("gray.jpg", image)                          
-    cv2.imwrite("average.jpg", output_average)              
-    cv2.imwrite("otsu.jpg", output_otsu)                    
-    cv2.imwrite("Adaptive_Gaussian_Thresholoding.jpg", aGH) 
+    # cv2.imwrite("gray.jpg", image)                          
+    # cv2.imwrite("average.jpg", output_average)              
+    cv2.imwrite("./Segmented Images/otsu.jpg", output_otsu)                    
+    # cv2.imwrite("Adaptive_Gaussian_Thresholoding.jpg", aGH) 
 
     cv2.imshow("input", image)                              
     cv2.imshow("average", output_average)                   
@@ -113,7 +113,7 @@ def main():
     plt.xlabel("brightness")                                
     plt.ylabel("frequency")                                 
     plt.xlim([0, 256])                                      
-    plt.savefig('histogram_sample.png')
+    plt.savefig('./Segmented Images/histogram_sample.png')
 
 if __name__ == '__main__':
     main()
