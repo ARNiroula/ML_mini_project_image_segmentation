@@ -30,9 +30,9 @@ def averageAndpixelSumCalculate(histgram):
 def within_betweenCV(pixelSum1, average1, variance1, pixelSum2, average2, variance2):
     
 
-    betweenClassVariance = (pixelSum1 * pixelSum2 * ((average1 - average2) ** 2) ) / ((pixelSum1 + pixelSum2) ** 2)#クラス間分散
+    betweenClassVariance = (pixelSum1 * pixelSum2 * ((average1 - average2) ** 2) ) / ((pixelSum1 + pixelSum2) ** 2)
 
-    withinClassVariance = (pixelSum1 * variance1 + pixelSum2 * variance2) / (pixelSum1 + pixelSum2)#クラス内分散
+    withinClassVariance = (pixelSum1 * variance1 + pixelSum2 * variance2) / (pixelSum1 + pixelSum2)
 
     return betweenClassVariance, withinClassVariance
 
