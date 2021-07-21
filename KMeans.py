@@ -20,7 +20,6 @@ class KMeans():
 
 	def getCentroids(self):
 		""" Returns position of the centroids
-		:return self.centroids: Centroids
 		"""
 		return self.centroids
 
@@ -28,13 +27,11 @@ class KMeans():
 		""" Returns clusters with shape (1, Npts).
 			E.g. a data point X[i] belongs to
 			cluster self.clusters[i].
-		:return self.clusters: clusters
 		"""
 		return self.clusters
 
 	def vizualize(self,name):
 		""" Plot data points and final position of centroids.
-			This function need to be called after training.
 		"""
 		plt.style.use("ggplot")
 		plt.scatter(self.X[:,0], self.X[:,1], color = '#333333')
@@ -51,10 +48,6 @@ class KMeans():
 	def fit(self, X, init_state = None, max_iter = 50):
 		""" Train the K-Mean model, finds ultimate positions
 		for centroids and create clusters.
-		:param X: Data matrix with shape (Npts, Ndim)
-		:param init_state: Initial state for centroids. If nothing is given,
-		the model will generate random positions.
-		:param max_iter: Maximum number of iterations
 		"""
 		_, Ndim = X.shape
 		self.X = X
@@ -79,8 +72,6 @@ class KMeans():
 
 	def predict(self, X):
 		""" Predicts clusters for data points.
-		:param X: Data point-s with shape (Npts, Ndim)
-		:return: predicted clusters
 		"""
 		diff = cdist(X, self.centroids, metric="euclidean")
 		return np.argmin(diff, axis=1)

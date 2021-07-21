@@ -52,7 +52,7 @@ def calculateAll(blackList, whiteList):
     return separationMetrics
 
 def main():
-    image_path = "./m_r.jpg"                            
+    image_path = "./Images/m_r.jpg"                            
     image = cv2.imread(image_path, 0)                      
 
     
